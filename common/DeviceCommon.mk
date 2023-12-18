@@ -21,7 +21,7 @@ include $(LOCAL_PATH)/ModemCommon.mk
 include $(LOCAL_PATH)/TelephonyCommon.mk
 include $(wildcard $(LOCAL_PATH)/common_packages.mk)
 include $(LOCAL_PATH)/emmc/emmc_device.mk
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+# $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 include $(LOCAL_PATH)/EngpcCommon.mk
 
 BOARD_VNDK_VERSION := current
@@ -147,7 +147,7 @@ endif # TARGET_BUILD_VARIANT == user
 #poweroff charge
 PRODUCT_PACKAGES += charge \
                     phasecheckserver
-include vendor/zte/lucyzh/proprietories-source/charge/charge.mk
+include vendor/zte/lucyzh/proprietary-source/charge/charge.mk
 
 #PowerHint HAL
 # sprdemand, interactive, schedutil_8
@@ -218,10 +218,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.media.wfd.rgb.enabled=true
 
-# factorytest modules
-PRODUCT_PACKAGES += \
-    factorytest
-
 # sensor
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-service \
@@ -261,6 +257,11 @@ PRODUCT_PACKAGES += \
         libgpspc
 
 ifeq ($(TARGET_BUILD_VARIANT),userdebug)
+PRODUCT_PACKAGES += \
+         libgnssmgtmock
+endif
+
+ifeq ($(TARGET_BUILD_VARIANT),eng)
 PRODUCT_PACKAGES += \
          libgnssmgtmock
 endif
@@ -477,11 +478,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.pq.enabled=1
 
-#Add PowerSaveModeLauncher
-TARGET_PWCTL_ULTRASAVING ?= true
-ifeq (true,$(strip $(TARGET_PWCTL_ULTRASAVING)))
-PRODUCT_PACKAGES += \
-    PowerSaveModeLauncher
 endif
 
 #copy cgroup blkio resource file
@@ -492,11 +488,6 @@ endif
 
 # SPRD WCN modules
 PRODUCT_PACKAGES += connmgr
-# EngineerMode modules
-PRODUCT_PACKAGES += \
-    EngineerMode \
-    EngineerInternal \
-    LogManager
 
 #copy coredump resource file
 ifneq ($(TARGET_BUILD_VARIANT),user)
@@ -548,9 +539,6 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-service \
     android.hardware.drm@1.2-service.widevine \
     android.hardware.drm@1.2-service.clearkey
-
-# misc
-PRODUCT_PACKAGES += tune2fs
 
 # Set default USB interface
 ifeq ($(TARGET_BUILD_VARIANT),eng)
@@ -676,34 +664,6 @@ PRODUCT_PACKAGES +=  \
     vendor.sprd.hardware.cplog_connmgr@1.0 \
     vendor.sprd.hardware.cplog_connmgr@1.0-service \
     modemlog_connmgr_service
-
-ifeq ($(strip $(FACEID_FEATURE_SUPPORT)),true)
-PRODUCT_PACKAGES += \
-    vendor.sprd.hardware.face@1.0-service \
-    face.default \
-    faceid.elf
-
-    ifeq ($(strip $(FACEID_TEE_FULL_SUPPORT)),true)
-    PRODUCT_PACKAGES += \
-        libfaceid_tee
-    else
-    PRODUCT_PACKAGES += \
-        libfaceid_ca \
-        libsprdfaceid
-    endif
-
-    ifeq ($(strip $(FACEID_VERSION_PROP)),1)
-        PRODUCT_PROPERTY_OVERRIDES += \
-            persist.sys.cam.faceid.version=1
-    endif
-    ifeq ($(strip $(FACEID_VERSION_PROP)),2)
-        PRODUCT_PROPERTY_OVERRIDES += \
-            persist.sys.cam.faceid.version=2
-    endif
-    ifeq ($(strip $(FACEID_VERSION_PROP)),3)
-        PRODUCT_PROPERTY_OVERRIDES += \
-            persist.sys.cam.faceid.version=3
-    endif
 
 PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.biometrics.face.xml:vendor/etc/permissions/android.hardware.biometrics.face.xml
 endif
@@ -852,11 +812,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.thumbnail.prefer_hw_codecs=true
 
 # Integrate Google Mainline Modules
-ifneq ($(wildcard vendor/zte/lucyzh/partner/google_mainline),)
+# ifneq ($(wildcard vendor/zte/lucyzh/partner/google_mainline),)
 #ifeq ($(strip $(TARGET_BUILD_VERSION)),gms)
-    include vendor/zte/lucyzh/partner/google_mainline/unisoc_integration_rule/mainline.mk
+    #include vendor/zte/lucyzh/partner/google_mainline/unisoc_integration_rule/mainline.mk
 #endif
-endif
+#endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.control_privapp_permissions=enforce
