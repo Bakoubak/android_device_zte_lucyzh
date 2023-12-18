@@ -478,8 +478,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.pq.enabled=1
 
-endif
-
 #copy cgroup blkio resource file
 ifeq ($(TARGET_BUILD_VARIANT),userdebug)
 PRODUCT_COPY_FILES += \
