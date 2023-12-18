@@ -218,12 +218,6 @@ TARGET_BOARD_CAMERA_CAF := false
 #select camera support autofocus
 TARGET_BOARD_CAMERA_AUTOFOCUS := false
 
-#support 3d face
-# TARGET_BOARD_3DFACE_SUPPORT := true
-
-#supprt ai sence
-# TARGET_BOARD_CAMERA_AI := true
-
 #Optics zoom
 TARGET_BOARD_OPTICSZOOM_SUPPORT := true
 
@@ -304,10 +298,6 @@ WIFI_DRIVER_FW_PATH_P2P     := "p2p_mode"
 WIFI_DRIVER_FW_PATH_AP      := "ap_mode"
 WIFI_DRIVER_MODULE_PATH     := "$(PRODUCT_VENDOR_KO_MOUNT_POINT)/socko/sprdwl_ng.ko"
 WIFI_DRIVER_MODULE_NAME     := "sprdwl_ng"
-BOARD_SEPOLICY_DIRS += device/sprd/sharkl3/common/sepolicy #\
-    #device/generic/goldfish/sepolicy/common
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += device/sprd/sharkl3/common/plat_sepolicy/private
-BOARD_PLAT_PUBLIC_SEPOLICY_DIR += device/sprd/sharkl3/common/plat_sepolicy/public
 
 #SPRD: acquire powerhint during playing video
 POWER_HINT_VIDEO_CONTROL_CORE := true
