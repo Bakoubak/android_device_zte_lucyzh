@@ -664,7 +664,6 @@ PRODUCT_PACKAGES +=  \
     modemlog_connmgr_service
 
 PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.biometrics.face.xml:vendor/etc/permissions/android.hardware.biometrics.face.xml
-endif
 
 #add for connmgr hidl
 
