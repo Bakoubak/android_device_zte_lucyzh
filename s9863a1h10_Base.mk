@@ -93,7 +93,7 @@ NORMAL_FSTAB_SUFFIX := $(NORMAL_FSTAB_SUFFIX1)$(NORMAL_FSTAB_SUFFIX2)
 PRODUCT_COPY_FILES += $(BOARDDIR)/rootdir/root/fstab.$(TARGET_BOARD)$(NORMAL_FSTAB_SUFFIX):vendor/etc/fstab.$(TARGET_BOARD)
 PRODUCT_COPY_FILES += $(BOARDDIR)/rootdir/root/fstab.ramdisk:$(TARGET_COPY_OUT_RAMDISK)/fstab.$(TARGET_BOARD)
 
-include vendor/sprd/modules/devdrv/input/misc/tcs3430/tcs3430.mk
+include vendor/zte/lucyzh/modules/devdrv/input/misc/tcs3430/tcs3430.mk
 #PRODUCT_PACKAGES += \
         tcs3430.ko
 
@@ -148,7 +148,7 @@ endif
 
 #mag sensor cali
 PRODUCT_COPY_FILES += \
-    vendor/sprd/modules/sensors/libsensorhub/ConfigSensor/calibration/mag_cali/akm_cali_img.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/EXEC_CALIBRATE_MAG_IMAGE
+    vendor/lucyzh/modules/sensors/libsensorhub/ConfigSensor/calibration/mag_cali/akm_cali_img.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/EXEC_CALIBRATE_MAG_IMAGE
 
 
 #camera sensor config
@@ -165,7 +165,7 @@ SPRD_GNSS_ARCH := arm64
 # GNSS
 ifeq ($(strip $(SUPPORT_GNSS_HARDWARE)), true)
 SPRD_GNSS_SHARKLE_PIKL2 := true
-$(call inherit-product, vendor/sprd/modules/wcn/gnss/device-sprd-gps.mk)
+$(call inherit-product, vendor/zte/lucyzh/modules/wcn/gnss/device-sprd-gps.mk)
 endif
 
 #WCN config
@@ -186,40 +186,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
       ro.sf.lcd_height=96 \
       ro.opengles.version=196610
 
-PRODUCT_DEXPREOPT_SPEED_APPS += \
-    SprdContacts \
-    SprdContactsProvider \
-    Email2 \
-    Exchange2 \
-    ExactCalculator \
-    SprdDeskClock \
-    DreamSoundRecorder \
-    Settings \
-    SettingsProvider \
-    SprdMediaProvider \
-    SprdDialer \
-    SprdCalendarProvider \
-    DreamCamera2 \
-    QuickCamera \
-    NewMusic \
-    MusicFX \
-    SprdBrowser \
-    SprdBrowserCustomAddon \
-    SprdBrowserStorageAddon \
-    NewGallery2 \
-    SystemUI \
-    Launcher3 \
-    webview
-#    SprdCalendar
-
 # Dual-sim config
 PRODUCT_PACKAGES += \
         Stk1 \
         MsmsStk
-
-# Screen Capture
-PRODUCT_PACKAGES += \
-        ScreenCapture
 
 # enable dual camera calibration
 PRODUCT_PROPERTY_OVERRIDES += ro.vendor.camera.dualcamera_cali_enable=1
@@ -252,10 +222,6 @@ PRODUCT_PACKAGES += \
 	enhance.$(TARGET_BOARD_PLATFORM) \
 	enhance_test
 
-# dpu PQTune module
-PRODUCT_PACKAGES += \
-	PQTune.$(TARGET_BOARD_PLATFORM)
-
 PRODUCT_PACKAGES += memtrack.$(TARGET_BOARD_PLATFORM)
 
 #audio vbc_eq
@@ -271,13 +237,6 @@ PRODUCT_PACKAGES += iwnpi \
                     libiwnpi \
                     libwifieut \
                     wifi_mac_gen \
-                    FMRadio \
-                    #libGLES_android \
-                    gralloc.$(TARGET_BOARD_PLATFORM)
-
-#faceid feature
-FACEID_FEATURE_SUPPORT := true
-
 
 #app stats collect
 PRODUCT_PROPERTY_OVERRIDES += persist.sys.pwctl.appstats=1

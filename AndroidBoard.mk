@@ -47,20 +47,6 @@ trusty: $(INSTALLED_TRUSTY_TARGET)
 $(INSTALLED_TRUSTY_TARGET):
 	@cp $(TARGET_BSP_OUT)/trusty/tos*.bin $(PRODUCT_OUT)
 
-## Compile Linux Kernel
-#ifneq ($(strip $(TARGET_NO_KERNEL)),true)
-#include $(KERNEL_PATH)/AndroidKernel.mk
-#file := $(PRODUCT_OUT)/kernel
-##ALL_PREBUILT += $(file)
-#$(file) : $(TARGET_PREBUILT_KERNEL) | $(ACP)
-#	$(transform-prebuilt-to-target)
-#endif # End of Kernel
-#
-## Compile dtb
-#ifeq ($(strip $(BOARD_KERNEL_SEPARATED_DT)),true)
-#include device/sprd/sharkl3/common/generate_dtb_image.mk
-#endif # End of dtb
-
 # Compile sprdisk
 ifneq ($(strip $(TARGET_NO_SPRDISK)),true)
 INSTALLED_SPRDISK_TARGET := $(PRODUCT_OUT)/sprdiskboot.img
