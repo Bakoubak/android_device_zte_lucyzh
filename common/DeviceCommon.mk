@@ -642,8 +642,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/root/ueventd.common.rc:recovery/root/ueventd.$(TARGET_BOARD).rc \
     $(LOCAL_PATH)/recovery/recovery.tmpfsdata.fstab:recovery/root/system/etc/recovery.tmpfsdata.fstab
 
-$(warning  "common/DeviceCommon.mk: PRODUCT_PACKAGES:  $(PRODUCT_PACKAGES)")
-
 #fs doesn't have HEH filename encryption
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.crypto.volume.filenames_mode=aes-256-cts
@@ -729,7 +727,7 @@ endif
 #for performance
 ifneq ($(strip $(PRODUCT_GO_DEVICE)),true)
 PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE := false
-$(warning "PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE: $(PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE)")
+# $(warning "PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE: $(PRODUCT_USE_PROFILE_FOR_BOOT_IMAGE)")
 endif
 
 # PRODUCT_PROPERTY_OVERRIDES  must be set before BoardConfig.mk
