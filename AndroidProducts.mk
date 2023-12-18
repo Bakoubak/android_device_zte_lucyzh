@@ -16,18 +16,18 @@
 
 
 PRODUCT_MAKEFILES += \
-        s9863a1h10_Natv:$(LOCAL_DIR)/s9863a1h10_Natv.mk \
-        s9863a1h10_Tsg:$(LOCAL_DIR)/s9863a1h10_Tsg.mk \
-        s9863a1h10_nosec:$(LOCAL_DIR)/s9863a1h10_nosec.mk \
+        lineage_lucyzh_Natv:$(LOCAL_DIR)/s9863a1h10_Natv.mk \
+        lineage_lucyzh_Tsg:$(LOCAL_DIR)/s9863a1h10_Tsg.mk \
+        lineage_lucyzh_nosec:$(LOCAL_DIR)/s9863a1h10_nosec.mk \
 
 COMMON_LUNCH_CHOICES := \
-        s9863a1h10_Natv-userdebug \
-        s9863a1h10_Natv-eng \
-        s9863a1h10_Natv-user \
-        s9863a1h10_Tsg-userdebug \
-        s9863a1h10_Tsg-eng \
-        s9863a1h10_Tsg-user \
-        s9863a1h10_nosec-userdebug \
-        s9863a1h10_nosec-eng \
-        s9863a1h10_nosec-user \
+        lineage_lucyzh_Natv-userdebug \
+        lineage_lucyzh_Natv-eng \
+        lineage_lucyzh_Natv-user \
+        lineage_lucyzh_Tsg-userdebug \
+        lineage_lucyzh_Tsg-eng \
+        lineage_lucyzh_Tsg-user \
+        lineage_lucyzh_nosec-userdebug \
+        lineage_lucyzh_nosec-eng \
+        lineage_lucyzh_nosec-user \
 

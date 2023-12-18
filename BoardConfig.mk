@@ -18,6 +18,7 @@ CHIP_NAME :=    sharkl3
 
 include device/zte/lucyzh/common/BoardCommon.mk
 
+TARGET_DEVICE := lineage_lucyzh
 #chipram tool for arm64
 TOOLCHAIN_64 := true
 
