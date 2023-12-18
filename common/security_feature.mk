@@ -62,7 +62,7 @@ ifneq ($(BOARD_TEE_LOW_MEM),true)
 PRODUCT_PACKAGES += \
     tsupplicant
 endif
-TRUSTY_SEPOLICY_DIR :=vendor/sprd/proprietories-source/sprdtrusty/vendor/sprd/modules/common/sepolicy_androidq
+TRUSTY_SEPOLICY_DIR :=vendor/zte/lucyzh/proprietories-source/sprdtrusty/vendor/sprd/modules/common/sepolicy_androidq
 BOARD_SEPOLICY_DIRS += $(TRUSTY_SEPOLICY_DIR)
 
 #secure boot
@@ -170,7 +170,7 @@ PRODUCT_PACKAGES += \
     vendor.sprd.hardware.fingerprintmmi@1.0-service-lazy
 endif
 
-BOARD_SEPOLICY_DIRS += vendor/sprd/interfaces/fingerprintmmi/sepolicy
+BOARD_SEPOLICY_DIRS += vendor/zte/lucyzh/interfaces/fingerprintmmi/sepolicy
 
 #for fingerprint BBAT & nativemmi test
 PRODUCT_PACKAGES += autotestfinger
@@ -181,11 +181,11 @@ endif
 endif
 
 ifeq ($(strip $(BOARD_FINGERPRINT_CONFIG)), microarray)
-include vendor/sprd/partner/microarray/sharkl3/microarray_sharkl3.mk
+include vendor/zte/lucyzh/partner/microarray/sharkl3/microarray_sharkl3.mk
 endif
 
 ifeq ($(strip $(BOARD_FINGERPRINT_CONFIG)), sunwave_sw9058g)
-include vendor/sprd/partner/sunwave/sharkl3/sunwave_sw9058g_sharkl3.mk
+include vendor/zte/lucyzh/partner/sunwave/sharkl3/sunwave_sw9058g_sharkl3.mk
 endif
 
 #add support checkX
@@ -229,7 +229,7 @@ PRODUCT_PACKAGES += \
    libsoter_checkx \
    vendor.sprd.hardware.soter@1.0-service
 
-BOARD_SEPOLICY_DIRS += vendor/sprd/generic/sepolicy/selinux/vendor/soter
+BOARD_SEPOLICY_DIRS += vendor/zte/lucyzh/generic/sepolicy/selinux/vendor/soter
 endif
 
 #TUI relevant
@@ -244,8 +244,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += $(BOARDDIR)/sinput_conf/stp.conf:vendor/etc/stp.conf
 
 BOARD_SEPOLICY_DIRS += \
-  vendor/sprd/proprietories-source/sprdtrusty/vendor/sprd/modules/tui_ca_demo/confirmationui/sepolicy_q \
-  vendor/sprd/proprietories-source/sprdtrusty/vendor/sprd/modules/tui_ca_demo/wakelock/sepolicy_q
+  vendor/zte/lucyzh/proprietories-source/sprdtrusty/vendor/sprd/modules/tui_ca_demo/confirmationui/sepolicy_q \
+  vendor/zte/lucyzh/proprietories-source/sprdtrusty/vendor/sprd/modules/tui_ca_demo/wakelock/sepolicy_q
 endif
 
 else

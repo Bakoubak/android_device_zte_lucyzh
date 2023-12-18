@@ -1,6 +1,6 @@
 TARGET_KERNEL_SOURCE := kernel/zte/lucyzh
 
-include device/sprd/sharkl3/s9863a1h10/s9863a1h10_Natv.mk
+include device/zte/lucyzh/s9863a1h10_Natv.mk
 
 BOARD_PATH=$(KERNEL_PATH)/sprd-board-config/sharkl3/sp9863a_1h10/s9863a1h10_Tsg
 include $(BOARD_PATH)

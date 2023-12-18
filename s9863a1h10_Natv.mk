@@ -13,8 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-KERNEL_PATH := kernel/zte/lucyzh
-export KERNEL_PATH
+TARGET_KERNEL_SOURCE := kernel/zte/lucyzh
 $(call inherit-product, device/zte/lucyzh/s9863a1h10_Base.mk)
 PLATDIR := device/zte/lucyzh
 TARGET_BOARD := s9863a1h10
@@ -29,12 +28,12 @@ CHIPRAM_DEFCONFIG := sp9863a_1h10
 UBOOT_DEFCONFIG := sp9863a_1h10
 UBOOT_TARGET_DTB := sp9863a_1h10
 
-PRODUCT_NAME := s9863a1h10_Natv
-PRODUCT_DEVICE := s9863a1h10
-PRODUCT_BRAND := SPRD
-PRODUCT_MODEL := s9863a1h10_Natv
+PRODUCT_NAME := lineage_lucyzh_Natv
+PRODUCT_DEVICE := lineage_lucyzh_Natv
+PRODUCT_BRAND := zte
+PRODUCT_MODEL := ZTE Blade A5 2019
 PRODUCT_WIFI_DEVICE := sprd
-PRODUCT_MANUFACTURER := sprd
+PRODUCT_MANUFACTURER := zte
 
 DEVICE_PACKAGE_OVERLAYS := $(BOARDDIR)/overlay $(PLATDIR)/overlay $(PLATCOMM)/overlay
 
