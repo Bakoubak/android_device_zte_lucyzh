@@ -16,9 +16,7 @@
 TARGET_KERNEL_SOURCE := kernel/zte/lucyzh
 $(call inherit-product, device/zte/lucyzh/s9863a1h10_Base.mk)
 PLATDIR := device/zte/lucyzh
-TARGET_BOARD := s9863a1h10
-BOARDDIR := $(PLATDIR)/$(TARGET_BOARD)
-PLATCOMM := $(PLATDIR)/common
+PLATCOMM := device/zte/lucyzh/common
 ROOTDIR := $(BOARDDIR)/rootdir
 TARGET_BOARD_PLATFORM := sp9863a
 TARGET_GPU_PLATFORM := rogue
@@ -118,7 +116,7 @@ BOARD_TUI_CONFIG := false
 PRODUCT_MODEM_COPY_LIST :=
 
 # FOR BSP
-TARGET_BSP_OUT := bsp/out/$(TARGET_BOARD)/dist
+TARGET_BSP_OUT := bsp/out/lucyzh/dist
 TARGET_PREBUILT_KERNEL := $(TARGET_BSP_OUT)/kernel/Image
 BSP_DTB_NAME := sp9863a-1h10
 TARGET_PREBUILT_DTB := $(TARGET_BSP_OUT)/kernel/$(BSP_DTB_NAME).dtb

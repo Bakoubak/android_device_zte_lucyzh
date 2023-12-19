@@ -15,6 +15,8 @@
 #
 
 PLATDIR := device/zte/lucyzh
+TARGET_BOARD := s9863a1h10
+BOARDDIR := $(PLATDIR)
 PLATCOMM := $(PLATDIR)/common
 TARGET_BOARD := s9863a1h10
 BOARDDIR := $(PLATDIR)
@@ -59,7 +61,7 @@ SUPPORT_LOCATION := enabled
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, $(PLATCOMM)/DeviceCommon.mk)
-$(call inherit-product, $(PLATCOMM)/proprietories.mk)
+$(call inherit-product, $(PLATCOMM)/proprietaries.mk)
 $(call inherit-product-if-exists, vendor/sprd/modules/libcamera/libcam_device.mk)
 $(call inherit-product-if-exists, vendor/sprd/modules/faceunlock/faceunlock_device.mk)
 
@@ -72,8 +74,8 @@ PRODUCT_PACKAGES += LowResolutionPowerSaving
 
 BOARD_HAVE_SPRD_WCN_COMBO := sharkl3
 BOARD_SPRD_WCN_SOCKET := sipc
-$(call inherit-product-if-exists, vendor/sprd/modules/wcn/connconfig/device-sprd-wcn.mk)
-$(call inherit-product-if-exists, vendor/sprd/modules/wlan/wlanconfig/device-sprd-wlan.mk)
+$(call inherit-product-if-exists, vendor/zte/lucyzh/modules/wcn/connconfig/device-sprd-wcn.mk)
+$(call inherit-product-if-exists, vendor/zte/lucyzh/modules/wlan/wlanconfig/device-sprd-wlan.mk)
 
 DEVICE_MANIFEST_FILE += $(BOARDDIR)/manifest_typec.xml
 
@@ -88,17 +90,16 @@ ifeq (true,$(strip $(BOARD_SECURE_BOOT_ENABLE)))
   NORMAL_FSTAB_SUFFIX2 :=
 endif
 NORMAL_FSTAB_SUFFIX := $(NORMAL_FSTAB_SUFFIX1)$(NORMAL_FSTAB_SUFFIX2)
-# $(warning NORMAL_FSTAB=$(LOCAL_PATH)/rootdir/root/fstab$(NORMAL_FSTAB_SUFFIX).$(TARGET_BOARD))
 # For Dynamic partitions feature, fstab install to ramdisk
-PRODUCT_COPY_FILES += $(BOARDDIR)/rootdir/root/fstab.$(TARGET_BOARD)$(NORMAL_FSTAB_SUFFIX):vendor/etc/fstab.$(TARGET_BOARD)
-PRODUCT_COPY_FILES += $(BOARDDIR)/rootdir/root/fstab.ramdisk:$(TARGET_COPY_OUT_RAMDISK)/fstab.$(TARGET_BOARD)
+PRODUCT_COPY_FILES += $(BOARDDIR)/rootdir/root/fstab.s9863a1h10$(NORMAL_FSTAB_SUFFIX):vendor/etc/fstab.s9863a1h10
+PRODUCT_COPY_FILES += $(BOARDDIR)/rootdir/root/fstab.ramdisk:$(TARGET_COPY_OUT_RAMDISK)/fstab.s9863a1h10
 
 include vendor/zte/lucyzh/modules/devdrv/input/misc/tcs3430/tcs3430.mk
 #PRODUCT_PACKAGES += \
         tcs3430.ko
 
 PRODUCT_COPY_FILES += \
-    $(BOARDDIR)/rootdir/root/init.$(TARGET_BOARD).rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(TARGET_BOARD).rc \
+    $(BOARDDIR)/rootdir/root/init.s9863a1h10.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.s9863a1h10.rc \
     $(ROOTDIR)/prodnv/PCBA.conf:$(TARGET_COPY_OUT_VENDOR)/etc/PCBA.conf \
     $(ROOTDIR)/prodnv/BBAT.conf:$(TARGET_COPY_OUT_VENDOR)/etc/BBAT.conf \
     $(ROOTDIR)/system/etc/audio_params/tiny_hw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/tiny_hw.xml \
@@ -109,8 +110,8 @@ PRODUCT_COPY_FILES += \
     $(ROOTDIR)/system/etc/audio_params/record_tone_1.pcm:$(TARGET_COPY_OUT_VENDOR)/etc/record_tone_1.pcm \
     $(ROOTDIR)/system/etc/audio_params/record_tone_2.pcm:$(TARGET_COPY_OUT_VENDOR)/etc/record_tone_2.pcm \
     $(ROOTDIR)/system/etc/audio_params/rx_data.pcm:$(TARGET_COPY_OUT_VENDOR)/etc/rx_data.pcm \
-    $(PLATCOMM)/rootdir/root/ueventd.common.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc \
-    $(PLATCOMM)/rootdir/root/init.common.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.$(TARGET_BOARD).usb.rc \
+    $(ROOTDIR)/root/ueventd.rc:$(TARGET_COPY_OUT_VENDOR)/ueventd.rc \
+    $(ROOTDIR)/root/init.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.s9863a1h10.usb.rc \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml \
@@ -125,7 +126,7 @@ PRODUCT_COPY_FILES += \
     $(BOARDDIR)/features/otpdata/obj_disc.txt:system/etc/otpdata/obj_disc.txt \
     $(BOARDDIR)/features/otpdata/sell_aft_cali.txt:system/etc/otpdata/sell_aft_cali.txt \
     $(BOARDDIR)/features/otpdata/sale_after_input_parameters_values.txt:system/etc/otpdata/sale_after_input_parameters_values.txt \
-    $(PLATCOMM)/rootdir/system/vendor/firmware/CT4F3044DSN-1_V04_D01_20190521_app.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/focaltech-FT5x46.bin
+    $(ROOTDIR)/system/vendor/firmware/CT4F3044DSN-1_V04_D01_20190521_app.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/focaltech-FT5x46.bin
 
 #copy audio policy config
 ifeq ($(USE_XML_AUDIO_POLICY_CONF), 1)

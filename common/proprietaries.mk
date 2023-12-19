@@ -1,9 +1,4 @@
 PROPRIETARY_BOARD := sharkl3
-
-#ifneq ($(shell ls -d vendor/sprd/proprietories-source 2>/dev/null),)
-# for spreadtrum internal proprietories modules: only support package module names
-
-#FIXME: C99[-Werror,-Wimplicit-function-declaration]
 PRODUCT_PACKAGES :=              \
     libomx_hevcdec_hw_sprd       \
     libomx_hevcenc_hw_sprd       \
@@ -94,41 +89,14 @@ PRODUCT_PACKAGES += \
     libmme_jrtc \
     ju_ipsec_server
 
-# vowifi default rings
-PRODUCT_PACKAGES += \
-    Busy.wav \
-    CallFailed.wav \
-    CallWait.wav \
-    Held.wav \
-    NoAnswer.wav \
-    RingBack.wav \
-    Ringtone.wav \
-    Term.wav \
-    Tone0.wav \
-    Tone1.wav \
-    Tone2.wav \
-    Tone3.wav \
-    Tone4.wav \
-    Tone5.wav \
-    Tone6.wav \
-    Tone7.wav \
-    Tone8.wav \
-    Tone9.wav \
-    TonePound.wav \
-    ToneStar.wav
-
-# vowifi Airtel_IN rings
-PRODUCT_PACKAGES += \
-    Airtel_IN_RingBack.wav
-
 endif
 # Enable VOWIFI functions end
 
 # add for linkturbo
-PRODUCT_PACKAGES += \
+# PRODUCT_PACKAGES += \
     LinkTurbo
-#add for sprd linkturbo_native service
-PRODUCT_PACKAGES += \
+# add for sprd linkturbo_native service
+# PRODUCT_PACKAGES += \
     linkturbonative
 
 #exfat support
@@ -137,8 +105,6 @@ PRODUCT_PACKAGES += \
     mkfs.exfat \
     fsck.exfat
 
-# for spreadtrum customer proprietories modules: only support direct copy
-#FIXME: C99[-Werror,-Wimplicit-function-declaration]
 PROPMODS :=                                     \
     system/lib/libomx_hevcdec_hw_sprd.so        \
     system/lib/libomx_hevcenc_hw_sprd.so        \

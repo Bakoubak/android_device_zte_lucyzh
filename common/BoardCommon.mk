@@ -1,4 +1,4 @@
-LOCAL_PATH := device/sprd/sharkl3/common
+LOCAL_PATH := device/zte/lucyzh/common
 TARGET_CPU_SMP := true
 TARGET_NO_KERNEL := false
 ROOTCOMM := $(LOCAL_PATH)/rootdir
