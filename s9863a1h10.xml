@@ -200,24 +200,6 @@
 						<NVFlag name="Replace" check="0"></NVFlag>
 					</BackupFlag>
 				</NVItem>
-				<NVItem name="BandSelect" backup="1">
-					<ID>0xA18</ID>
-					<BackupFlag use="1">
-						<NVFlag name="Continue" check="0"></NVFlag>
-					</BackupFlag>
-				</NVItem>
-				<NVItem name="WIFI" backup="1">
-					<ID>0x199</ID>
-					<BackupFlag use="1">
-						<NVFlag name="Continue" check="1"></NVFlag>
-					</BackupFlag>
-				</NVItem>
-				<NVItem name="MMITest" backup="1">
-					<ID>0x19A</ID>
-					<BackupFlag use="1">
-						<NVFlag name="Continue" check="1"></NVFlag>
-					</BackupFlag>
-				</NVItem>
 				<NVItem name="SUBSIDY_BLOB" backup="1">
 					<ID>0x91B</ID>
 					<BackupFlag use="1">
@@ -228,24 +210,6 @@
 					<ID>0x91D</ID>
 					<BackupFlag use="1">
 					<NVFlag name="Continue" check="1"></NVFlag>
-					</BackupFlag>
-				</NVItem>
-				<NVItem name="WIFICal1" backup="1">
-					<ID>0x19F</ID>
-					<BackupFlag use="1">
-						<NVFlag name="Continue" check="1"></NVFlag>
-					</BackupFlag>
-				</NVItem>
-				<NVItem name="WIFICal2" backup="1">
-					<ID>0x1A0</ID>
-					<BackupFlag use="1">
-						<NVFlag name="Continue" check="1"></NVFlag>
-					</BackupFlag>
-				</NVItem>
-				<NVItem name="WIFICal3" backup="1">
-					<ID>0x1A1</ID>
-					<BackupFlag use="1">
-						<NVFlag name="Continue" check="1"></NVFlag>
 					</BackupFlag>
 				</NVItem>
 				<NVItem name="SIMLOCK_SIGN" backup="1">
@@ -290,18 +254,6 @@
 						<NVFlag name="Continue" check="1"></NVFlag>
 					</BackupFlag>
 				</NVItem>
-				<NVItem name="SECURITY_DATA_PK" backup="1">
-					<ID>0x91E</ID>
-					<BackupFlag use="1">
-						<NVFlag name="Continue" check="1"></NVFlag>
-					</BackupFlag>
-				</NVItem>
-				<NVItem name="SECURITY_DATA_SIGN" backup="1">
-					<ID>0x91F</ID>
-					<BackupFlag use="1">
-						<NVFlag name="Continue" check="1"></NVFlag>
-					</BackupFlag>
-				</NVItem>
 				<NVItem name="GSM_rf_8psk_tx_gain_table" backup="1">
 					<ID>0xAA3</ID>
 					<BackupFlag use="1">
@@ -311,7 +263,7 @@
 			</NVBackup>
 			<Partitions>
 				<!-- size unit is MBytes -->
-				<Partition id="prodnv" size="10"/>
+				<Partition id="prodnv" size="5"/>
 				<Partition id="miscdata" size="1"/>
 				<Partition id="recovery" size="40"/>
 				<Partition id="misc" size="1"/>
@@ -322,8 +274,8 @@
 				<Partition id="uboot" size="1"/>
 				<Partition id="uboot_bak" size="1"/>
 				<Partition id="uboot_log" size="4"/>
-				<Partition id="logo" size="6"/>
-				<Partition id="fbootlogo" size="6"/>
+				<Partition id="logo" size="20"/>
+				<Partition id="fbootlogo" size="3"/>
 				<Partition id="l_fixnv1" size="2"/>
 				<Partition id="l_fixnv2" size="2"/>
 				<Partition id="l_runtimenv1" size="2"/>
@@ -332,25 +284,22 @@
 				<Partition id="gpsbd" size="1"/>
 				<Partition id="wcnmodem" size="10"/>
 				<Partition id="persist"   size="2"/>
+				<Partition id="ztecfg"   size="8"/>
+				<Partition id="ztepersist"   size="32"/>
 				<Partition id="l_modem" size="25"/>
 				<Partition id="l_deltanv" size="1"/>
 				<Partition id="l_gdsp" size="10"/>
 				<Partition id="l_ldsp" size="20"/>
 				<Partition id="pm_sys" size="1"/>
-				<Partition id="teecfg" size="1"/>
-				<Partition id="teecfg_bak" size="1"/>
 				<Partition id="boot" size="35"/>
-                		<Partition id="dtbo" size="8"/>
-				<Partition id="super" size="4100"/>
+                                <Partition id="dtb" size="8"/>
+                                <Partition id="dtbo" size="8"/>
+				<Partition id="system" size="3584"/>
 				<Partition id="cache" size="150"/>
-				<Partition id="socko" size="75"/>
-				<Partition id="odmko" size="25"/>
+				<Partition id="vendor" size="400"/>
+				<Partition id="product" size="100"/>
 				<Partition id="vbmeta" size="1"/>
 				<Partition id="vbmeta_bak" size="1"/>
-				<Partition id="metadata" size="16"/>
-				<Partition id="sysdumpdb" size="10"/>
-				<Partition id="vbmeta_system" size="1"/>
-				<Partition id="vbmeta_vendor" size="1"/>
 				<Partition id="userdata" size="0xFFFFFFFF"/>
 			</Partitions>
 			<ProductComment/>
@@ -400,7 +349,7 @@
 				<Type>CODE2</Type>
 				<Block id="prodnv">
 					<Base>0x0</Base>
-					<Size>0xA00000</Size>
+					<Size>0x500000</Size>
 				</Block>
 				<Flag>1</Flag>
 				<CheckFlag>2</CheckFlag>
@@ -465,30 +414,6 @@
 				<Flag>1</Flag>
 				<CheckFlag>2</CheckFlag>
 				<Description>vbmeta image file</Description>
-			</File>
-			<File>
-				<ID>VBMETA_SYSTEM</ID>
-				<IDAlias>VBMETA_SYSTEM</IDAlias>
-				<Type>CODE2</Type>
-				<Block id="vbmeta_system">
-					<Base>0x0</Base>
-					<Size>0x0</Size>
-				</Block>
-				<Flag>1</Flag>
-				<CheckFlag>2</CheckFlag>
-				<Description>system vbmeta image file</Description>
-			</File>
-			<File>
-				<ID>VBMETA_VENDOR</ID>
-				<IDAlias>VBMETA_VENDOR</IDAlias>
-				<Type>CODE2</Type>
-				<Block id="vbmeta_vendor">
-					<Base>0x0</Base>
-					<Size>0x0</Size>
-				</Block>
-				<Flag>1</Flag>
-				<CheckFlag>2</CheckFlag>
-				<Description>vendor and product vbmeta image file</Description>
 			</File>
 			<File>
 				<ID>Modem_LTE</ID>
@@ -587,6 +512,30 @@
 				<Description>Modem_WCN image file</Description>
 			</File>
 			<File>
+				<ID>ztecfg</ID>
+				<IDAlias>ztecfg</IDAlias>
+				<Type>CODE2</Type>
+				<Block id="ztecfg">
+					<Base>0x0</Base>
+					<Size>0x0</Size>
+				</Block>
+				<Flag>0</Flag>
+				<CheckFlag>0</CheckFlag>
+				<Description>zte cfg partition</Description>
+			</File>
+			<File>
+				<ID>ztepersist</ID>
+				<IDAlias>ztepersist</IDAlias>
+				<Type>CODE2</Type>
+				<Block id="ztepersist">
+					<Base>0x0</Base>
+					<Size>0x0</Size>
+				</Block>
+				<Flag>0</Flag>
+				<CheckFlag>0</CheckFlag>
+				<Description>zte persist partition</Description>
+			</File>
+			<File>
 				<ID>BOOT</ID>
 				<IDAlias>BOOT</IDAlias>
 				<Type>CODE2</Type>
@@ -598,6 +547,18 @@
 				<CheckFlag>0</CheckFlag>
 				<Description>Kernel image file</Description>
 			</File>
+                        <File>
+                                <ID>DTB</ID>
+                                <IDAlias>DTB</IDAlias>
+                                <Type>CODE2</Type>
+                                <Block id="dtb">
+                                        <Base>0x0</Base>
+                                        <Size>0x0</Size>
+                                </Block>
+                                <Flag>1</Flag>
+                                <CheckFlag>0</CheckFlag>
+                                <Description>dtb image file</Description>
+                        </File>
                         <File>
                                 <ID>DTBO</ID>
                                 <IDAlias>DTBO</IDAlias>
@@ -623,16 +584,16 @@
 				<Description>Recovery image file</Description>
 			</File>
 			<File>
-				<ID>Super</ID>
-				<IDAlias>Super</IDAlias>
+				<ID>System</ID>
+				<IDAlias>System</IDAlias>
 				<Type>YAFFS_IMG2</Type>
-				<Block id="super">
+				<Block id="system">
 					<Base>0x0</Base>
 					<Size>0x0</Size>
 				</Block>
 				<Flag>1</Flag>
 				<CheckFlag>0</CheckFlag>
-				<Description>Super image file</Description>
+				<Description>System image file</Description>
 			</File>
 			<File>
 				<ID>UserData</ID>
@@ -683,30 +644,6 @@
 				<Description>Download cache section operation</Description>
 			</File>
 			<File>
-				<ID>Socko</ID>
-				<IDAlias>Socko</IDAlias>
-				<Type>YAFFS_IMG2</Type>
-				<Block id="socko">
-					<Base>0x0</Base>
-					<Size>0x0</Size>
-				</Block>
-				<Flag>1</Flag>
-				<CheckFlag>2</CheckFlag>
-				<Description>Download socko section operation</Description>
-			</File>
-			<File>
-				<ID>Odmko</ID>
-				<IDAlias>Odmko</IDAlias>
-				<Type>YAFFS_IMG2</Type>
-				<Block id="odmko">
-					<Base>0x0</Base>
-					<Size>0x0</Size>
-				</Block>
-				<Flag>1</Flag>
-				<CheckFlag>2</CheckFlag>
-				<Description>Download odmko section operation</Description>
-			</File>
-			<File>
 				<ID>FLASH_LTE</ID>
 				<IDAlias>EraseRuntimeNV_LTE</IDAlias>
 				<Type>EraseFlash2</Type>
@@ -731,18 +668,6 @@
 				<Description>Erase misc section operation</Description>
 			</File>
 			<File>
-				<ID>EraseSysdumpdb</ID>
-				<IDAlias>EraseSysdumpdb</IDAlias>
-				<Type>EraseFlash2</Type>
-				<Block id="sysdumpdb">
-					<Base>0x0</Base>
-					<Size>0x0</Size>
-				</Block>
-				<Flag>0</Flag>
-				<CheckFlag>0</CheckFlag>
-				<Description>Erase misc section operation</Description>
-			</File>
-			<File>
 				<ID>Trustos</ID>
 				<IDAlias>Trustos</IDAlias>
 				<Type>CODE2</Type>
@@ -753,18 +678,6 @@
 				<Flag>1</Flag>
 				<CheckFlag>2</CheckFlag>
 				<Description>Download trustos operation</Description>
-			</File>
-			<File>
-				<ID>Teecfg</ID>
-				<IDAlias>Teecfg</IDAlias>
-				<Type>CODE2</Type>
-				<Block id="teecfg">
-					<Base>0x0</Base>
-					<Size>0x0</Size>
-				</Block>
-				<Flag>1</Flag>
-				<CheckFlag>2</CheckFlag>
-				<Description>Download teecfg operation</Description>
 			</File>
 			<File>
 				<ID>SML</ID>
@@ -779,6 +692,30 @@
 				<Description>Download sml operation</Description>
 			</File>
 			<File>
+				<ID>Vendor</ID>
+				<IDAlias>Vendor</IDAlias>
+				<Type>YAFFS_IMG2</Type>
+				<Block id="vendor">
+					<Base>0x0</Base>
+					<Size>0x0</Size>
+				</Block>
+				<Flag>1</Flag>
+				<CheckFlag>0</CheckFlag>
+				<Description>Vendor image file</Description>
+			</File>
+			<File>
+                                <ID>Product</ID>
+                                <IDAlias>Product</IDAlias>
+                                <Type>YAFFS_IMG2</Type>
+                                <Block id="product">
+                                        <Base>0x0</Base>
+                                        <Size>0x0</Size>
+                                </Block>
+                                <Flag>1</Flag>
+                                <CheckFlag>2</CheckFlag>
+                                <Description>Product image file</Description>
+                        </File>
+			<File>
 				<ID>Persist</ID>
 				<IDAlias>Persist</IDAlias>
 				<Type>YAFFS_IMG2</Type>
@@ -790,18 +727,7 @@
 				<CheckFlag>0</CheckFlag>
 				<Description>Persist image file</Description>
 			</File>
-			<File>
-				<ID>EraseMetadata</ID>
-				<IDAlias>EraseMetadata</IDAlias>
-				<Type>EraseFlash2</Type>
-				<Block id="metadata">
-					<Base>0x0</Base>
-					<Size>0x0</Size>
-				</Block>
-				<Flag>0</Flag>
-				<CheckFlag>0</CheckFlag>
-				<Description>Erase metadata section operation</Description>
-			</File>
+
 			<File>
 				<ID>UBOOTLoader</ID>
 				<IDAlias>UBOOT_LOADER</IDAlias>
