@@ -126,7 +126,10 @@ PRODUCT_COPY_FILES += \
     $(BOARDDIR)/features/otpdata/obj_disc.txt:system/etc/otpdata/obj_disc.txt \
     $(BOARDDIR)/features/otpdata/sell_aft_cali.txt:system/etc/otpdata/sell_aft_cali.txt \
     $(BOARDDIR)/features/otpdata/sale_after_input_parameters_values.txt:system/etc/otpdata/sale_after_input_parameters_values.txt \
-    $(ROOTDIR)/system/vendor/firmware/CT4F3044DSN-1_V04_D01_20190521_app.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/focaltech-FT5x46.bin
+    $(ROOTDIR)/system/vendor/firmware/focaltech-FT5x46.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/focaltech-FT5x46.bin
+    $(ROOTDIR)/system/vendor/firmware/EXEC_CALIBRATE_MAG_IMAGE:$(TARGET_COPY_OUT_VENDOR)/firmware/EXEC_CALIBRATE_MAG_IMAGE
+    $(ROOTDIR)/system/vendor/firmware/Syna_firmware_HXD.img:$(TARGET_COPY_OUT_VENDOR)/firmware/Syna_firmware_HXD.img
+    $(ROOTDIR)/system/vendor/firmware/Syna_firmware_LCE.img:$(TARGET_COPY_OUT_VENDOR)/firmware/Syna_firmware_LCE.img
 
 #copy audio policy config
 ifeq ($(USE_XML_AUDIO_POLICY_CONF), 1)
